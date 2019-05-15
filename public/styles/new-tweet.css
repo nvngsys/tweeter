@@ -1,0 +1,47 @@
+.container {
+    /* border-radius: 25px; */
+    /* outline: solid 2px; */
+    max-width: 100em;
+    min-height: 10em;
+    /* padding: 2em */
+    padding-left: 2em;
+    padding-right: 2em;     
+    /* border-radius: 15px; */
+    /* -webkit-border-radius: 15px; */
+  }
+
+ .new-tweet{
+    background: #D3D3D3;
+    border-radius: 25px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    /* outline: solid 2px; */
+    max-width: 28em;
+    min-height: 12em;
+    padding-left: 1em;
+    padding-right: 1em;
+ }
+
+  h2{
+    /* text-decoration: underline; */
+    font-size: 2em;
+    /* text-align: center; */
+    border-bottom: 2px solid black;
+  }
+
+  textarea[name=text]{
+    padding-right: 16em;
+    padding-left: 5em;
+    min-height: 4em;
+    min-width: 5em;
+  } 
+
+.counter{
+    color: black;
+    float: right;
+
+}  
+
+input[type=submit] {
+    width: 6em;  height: 3em;
+}
