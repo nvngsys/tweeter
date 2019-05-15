@@ -1,8 +1,9 @@
 .container {
     /* border-radius: 25px; */
     /* outline: solid 2px; */
+    background-color: white;
     max-width: 100em;
-    min-height: 10em;
+    min-height: 100em;
     /* padding: 2em */
     padding-left: 2em;
     padding-right: 2em;     
@@ -13,8 +14,8 @@
  .new-tweet{
     background: #D3D3D3;
     border-radius: 25px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+    /* -moz-border-radius: 15px;
+    -webkit-border-radius: 15px; */
     /* outline: solid 2px; */
     max-width: 28em;
     min-height: 12em;
@@ -22,26 +23,92 @@
     padding-right: 1em;
  }
 
-  h2{
+ .new-tweet h2{
     /* text-decoration: underline; */
     font-size: 2em;
+    padding-top: 0.5em;
+    margin-top:0;
     /* text-align: center; */
     border-bottom: 2px solid black;
   }
 
   textarea[name=text]{
-    padding-right: 16em;
-    padding-left: 5em;
+    /* padding-right: 16em;
+    padding-left: 5em; */
     min-height: 4em;
-    min-width: 5em;
+    min-width: 100%;
   } 
 
 .counter{
     color: black;
     float: right;
 
-}  
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.onhover{
+  background-color: yellow;
+}
 
 input[type=submit] {
     width: 6em;  height: 3em;
+}
+
+.existing-tweet header{
+
+}
+
+.existing-tweet{
+  /* article class*/
+  margin-top: 2em;
+  min-height: 10em;
+  background: #D3D3D3;
+  border-radius: 25px;
+  border: 3px solid darkgray;
+  background-clip: padding-box;
+}
+
+.existing-tweet h2{
+  margin:0;
+  height: 3em;
+  padding-top: 0.5em;
+ /* float:left;
+ font-size: 2em;
+ padding-top: 0.5em;
+ width:100%;
+ height: 1.5em
+ padding-left: 1em;
+ padding-right: 1em;
+ border-bottom: 2px solid black; */
+}
+
+.existing-tweet p{
+  
+  padding-left: 2em;
+  padding-top: 1em;
+  background: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: 6em;
+  min-width: 100%;
+}
+
+
+.existing-tweet img{
+  height: 60px;
+  width: 60px;
+  float: left;
+}
+
+.existing-tweet footer{
+  width: 100%;
+  min-height: 2em;
+  /* padding-top: 4em; */
+  padding-left: 2em;
+  background: white;
+  border-top: 2px solid gray;
 }
