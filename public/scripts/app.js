@@ -1,41 +1,114 @@
-/*
+/* -------------------------------
+ * Develeper: Jack Brennan
+ * Created: May 15, 2019
+ * Purpose: 
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
-    "user": {
-        "name": "Newton",
-        "avatars": {
-            "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-            "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-            "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-    },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-}
+$(document).ready(function () {
 
-function createTweetElement(tweet) {
+    function renderTweets(tweets) {
+        // loops through tweets
+        // calls createTweetElement for each tweet
+        // takes return value and appends it to the tweets container
+        let $tweet = {};
+        tweets.forEach(item => {
+            //console.log(item); // for each element/object in array pass to createTweetElement()
+            $tweet = createTweetElement(item);
+            $('.tweet-container').append($tweet);
+        });
+    }
 
-    let $tweet = $('<article>').addClass('tweet');
-    let test = $('<header>');
-    test.appendTo($tweet);
-    $('<p>').appendTo($tweet);
+    function createTweetElement(tweet) {
 
-    return $tweet;
-}
+        let hdrTxt = tweet['user']['name'];
+        let content = tweet['content']['text'];
+        let daysAgo = tweet['created_at'];
+        let imageSource = tweet['user']['avatars']['small'];
+        // ADD THE OTHER IMAGES AT FONTAWESOME - UPDATE APPEND TO ADD TO FOOTER
+        // YOU MAY NEED TO ADD TWO ELEMENTS TO FOOTER TO DISPLAY TIME ON LEFT
+        // AND FLAGS ETC ON RIGHT
+        //let imageFlag = '<i class="fas fa-flag"></i>;
 
-var $tweet = createTweetElement(tweetData);
+        //console.log(imageSource);
+        // let tweets = $('<article>').addClass('tweet');
+        // let test = $('<header>');
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-  //console.log(tweetData); // this will return the data in tweetData object
+        let a = $('<article>').addClass("existing-tweet");
+        let hdr = $('<header>');
+        let img = $('<img>');
+        // let footer = $('<footer>');
+        //build header
 
-  //$('#article').append($tweet);
-  //$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes,etc.
+        //$('<img src="/images/bird.png">').appendTo(hdr);  //worked
+        //$('`<img src=${imageSource}>`').appendTo(hdr);   // trying to add source from data
+        //$('.existing-tweet img').attr('src', imageSource);
+        img.attr('src', imageSource);
+        img.appendTo(hdr);
+        $('<h2>').text(hdrTxt).appendTo(hdr);
+        hdr.appendTo(a);
+        $('<p>').text(content).appendTo(a);
+        $('<footer>').text(daysAgo).appendTo(a);
+
+        //console.log(a);
+        return a;
+    }
+    function loadTweets() {
+        $.get("/tweets/", function (data) {
+            //alert( "Load was performed." );
+            renderTweets(data);
+        });
+    }
+
+    loadTweets();
+
+    //DevNote - using form as it higher up than the input and then catches all other elements that might be submittted
+    // originally used .click but .submit is more encompassing
+    $("form").submit(function (event) {
+        event.preventDefault();
+        //alert("Testing - Handler click for .click() called...");
+        /** send data to server below - these three values are required */
+        let maxLen = 140;
+        let submitTrue = true;
+        let $form = $(this);
+        let term = $form.find("textarea[name=text]").val();
+        let url = $form.attr("action");
+
+        /** perform text validation before sending */
+        if (term === null || term === "") {
+            //alert(`Tweet cannot be empty`);
+            // move this to the element and call .unhide
+            submitTrue = false;
+            $('#tweetErr').text("Your tweet is empty!");
+            $('#tweetErr').removeClass('hide');
+        }
+
+        if (term.length > maxLen) {
+            //alert(`Tweet cannot be more than 140 characters`);
+            submitTrue = false;
+            console.log(`length error`)
+            $('#tweetErr').text(`Tweet exceeds ${maxLen} characters!`);
+            $('#tweetErr').removeClass('hide');            
+        }
+
+        // console.log(term);
+        // console.log(url);
+        if (submitTrue) {
+            var posting = $.post(url, { text: term });
+            loadTweets();
+            $form.find("textarea[name=text]").val('');
+        } else {
+            //clear the input field
+            $form.find("textarea[name=text]").val('');
+        }
+
+    });
+
+    $("#nav-bar [type=button]").click(function(){
+        //alert("nav bar button click.");
+        $(".new-tweet").slideDown().find("#txt1").focus();
+    });
+
+});

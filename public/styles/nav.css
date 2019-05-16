@@ -20,3 +20,17 @@
     font-size: 200%;
     line-height: 2.5em;
 }
+#nav-bar [type=button]{
+    float: right;
+    font-size: 12px;
+    width: 15em;  
+    height: 5em;
+    border-radius: 12em;
+    margin: 2em;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#nav-bar [type=button]:hover{
+    opacity: 1;
+  }
