@@ -73,9 +73,13 @@ input[type=submit] {
   opacity: 0.6;
 }
 
-.existing-tweet:hover{
+.existing-tweet:hover .fas {
   opacity: 1;
 }
+
+/* .fas:hover {
+  opacity: 1;
+} */
 
 #headerNames{
   padding: 0.5em;
@@ -122,4 +126,21 @@ input[type=submit] {
   padding-left: 2em;
   background: white;
   border-top: 2px solid gray;
+}
+
+.fas {
+  color: #00a087;
+  opacity: 0;
+}
+
+.fas:hover {
+  opacity: 1;
+}
+.fa-flag{
+  margin-left: 180px;
+}
+
+.fa-retweet {
+  margin-right: 5px;
+  margin-left: 5px;
 }

@@ -19,7 +19,7 @@ $(document).ready(function () {
     }
 
     function createTweetElement(tweet) {
-
+        /** get content */
         let hdrTxt = tweet['user']['name'];
         let content = tweet['content']['text'];
         let handle = tweet['user']['handle'];
@@ -27,34 +27,32 @@ $(document).ready(function () {
         let unixTime = tweet['created_at'];
         let daysAgo = moment(unixTime).fromNow();
 
-        // TO DO ********>
-        // ADD THE OTHER IMAGES AT FONTAWESOME - UPDATE APPEND TO ADD TO FOOTER
-        // YOU MAY NEED TO ADD TWO ELEMENTS TO FOOTER TO DISPLAY TIME ON LEFT
-        // AND FLAGS ETC ON RIGHT
-        //let imageFlag = '<i class="fas fa-flag"></i>;
-        //let imageHeart = <i class="fas fa-heart"></i>
-        //let imageReTweet = <i class="fas fa-retweet-alt"></i>
-
-
+        /** Build HTML for existing tweet dynamically */
         let a = $('<article>').addClass("existing-tweet");
         let hdr = $('<header>');
         let div = $('<div>');
-        div.attr('id', 'headerNames');
-        
-        // to do
+        let footer = $('<footer>');
         let divFoot = $('<div>');
-        divFoot.attr('id', 'footerLikes');
-
         let img = $('<img>');
         let src = $('<src>');
         img.attr('src', imageSource);
+        div.attr('id', 'headerNames');
         img.appendTo(hdr);
         div.appendTo(hdr);
         $('<h2>').text(hdrTxt).appendTo(div);
         $('<span>').addClass("handle").text(handle).appendTo(div);
         hdr.appendTo(a);
         $('<p>').text(content).appendTo(a);
-        $('<footer>').text(daysAgo).appendTo(a);
+
+        //orig
+        //$('<footer>').text(daysAgo).appendTo(a);
+        divFoot.attr('id', 'footerLikes');
+        divFoot.appendTo(footer);
+        $('<span>').addClass("handle").text(daysAgo).appendTo(footer);
+        $('<i>').addClass("fas fa-flag").appendTo(footer);
+        $('<i>').addClass("fas fa-retweet").appendTo(footer);
+        $('<i>').addClass("fas fa-heart").appendTo(footer);
+        footer.appendTo(a);
 
         return a;
     }
@@ -66,8 +64,6 @@ $(document).ready(function () {
 
     loadTweets();
 
-    //DevNote - using form as it higher up than the input and then catches all other elements that might be submittted
-    // originally used .click but .submit is more encompassing
     $("form").submit(function (event) {
         event.preventDefault();
         $('.tweet-container').empty();
