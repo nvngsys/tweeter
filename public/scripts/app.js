@@ -68,6 +68,7 @@ $(document).ready(function () {
     // originally used .click but .submit is more encompassing
     $("form").submit(function (event) {
         event.preventDefault();
+        $('.tweet-container').empty();
         //alert("Testing - Handler click for .click() called...");
         /** send data to server below - these three values are required */
         let maxLen = 140;
