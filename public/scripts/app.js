@@ -7,6 +7,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
 $(document).ready(function () {
 
     function renderTweets(tweets) {
@@ -21,20 +22,29 @@ $(document).ready(function () {
 
         let hdrTxt = tweet['user']['name'];
         let content = tweet['content']['text'];
-        let daysAgo = tweet['created_at'];
         let handle = tweet['user']['handle'];
         let imageSource = tweet['user']['avatars']['small'];
+        let unixTime = tweet['created_at'];
+        let daysAgo = moment(unixTime).fromNow();
 
         // TO DO ********>
         // ADD THE OTHER IMAGES AT FONTAWESOME - UPDATE APPEND TO ADD TO FOOTER
         // YOU MAY NEED TO ADD TWO ELEMENTS TO FOOTER TO DISPLAY TIME ON LEFT
         // AND FLAGS ETC ON RIGHT
         //let imageFlag = '<i class="fas fa-flag"></i>;
+        //let imageHeart = <i class="fas fa-heart"></i>
+        //let imageReTweet = <i class="fas fa-retweet-alt"></i>
+
 
         let a = $('<article>').addClass("existing-tweet");
         let hdr = $('<header>');
         let div = $('<div>');
         div.attr('id', 'headerNames');
+        
+        // to do 
+        let divFoot = $('<div>');
+        divFoot.attr('id', 'footerLikes');
+
         let img = $('<img>');
         let src = $('<src>');
         img.attr('src', imageSource);

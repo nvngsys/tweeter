@@ -23,14 +23,17 @@
 }
 #nav-bar [type=button]{
     float: right;
+    color: white;
     font-size: 23px;
-    width: 150px;  
+    width: 200px;  
     height: 60px;
     background-color: white;
     border-radius: 10px;
     margin: 1em;
+    text-align: right;
+    padding-right: 1em;
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.5;
     background: url("https://image.flaticon.com/icons/svg/145/145812.svg") no-repeat;
 }
 
