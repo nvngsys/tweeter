@@ -41,7 +41,7 @@ $(document).ready(function () {
         let div = $('<div>');
         div.attr('id', 'headerNames');
         
-        // to do 
+        // to do
         let divFoot = $('<div>');
         divFoot.attr('id', 'footerLikes');
 
