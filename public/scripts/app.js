@@ -10,11 +10,12 @@
 
 $(document).ready(function () {
 
-    function renderTweets(tweets) {
+    function renderTweets(tweets) {        
         let $tweet = {};
         tweets.forEach(item => {
             $tweet = createTweetElement(item);
-            $('.tweet-container').append($tweet);
+            //$('.tweet-container').append($tweet);
+            $('.tweet-container').prepend($tweet);
         });
     }
 
