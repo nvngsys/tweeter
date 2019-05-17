@@ -128,6 +128,11 @@ input[type=submit] {
   border-top: 2px solid gray;
 }
 
+#footerLikes {
+  float: right;
+  margin-right: 10px;
+}
+
 .fas {
   color: #00a087;
   opacity: 0;
@@ -135,9 +140,6 @@ input[type=submit] {
 
 .fas:hover {
   opacity: 1;
-}
-.fa-flag{
-  margin-left: 180px;
 }
 
 .fa-retweet {

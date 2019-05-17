@@ -47,12 +47,14 @@ $(document).ready(function () {
 
         //orig
         //$('<footer>').text(daysAgo).appendTo(a);
-        divFoot.attr('id', 'footerLikes');
-        divFoot.appendTo(footer);
         $('<span>').addClass("handle").text(daysAgo).appendTo(footer);
-        $('<i>').addClass("fas fa-flag").appendTo(footer);
-        $('<i>').addClass("fas fa-retweet").appendTo(footer);
-        $('<i>').addClass("fas fa-heart").appendTo(footer);
+        
+        divFoot.attr('id', 'footerLikes');
+        $('<i>').addClass("fas fa-flag").appendTo(divFoot);
+        $('<i>').addClass("fas fa-retweet").appendTo(divFoot);
+        $('<i>').addClass("fas fa-heart").appendTo(divFoot);
+        divFoot.appendTo(footer);
+        
         footer.appendTo(a);
 
         return a;
