@@ -10,8 +10,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 # Final Product
 
-![Home Page](/public/images/tweeter2.png)
-![Compose Tweet](/public/images/tweeter1.png)
+![Home Page](/docs/tweeter2.png)
+![Compose Tweet](/docs/tweeter1.png)
 
 
 
