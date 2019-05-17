@@ -26,6 +26,7 @@ $(document).ready(function () {
         let hdrTxt = tweet['user']['name'];
         let content = tweet['content']['text'];
         let daysAgo = tweet['created_at'];
+        let handle = tweet['user']['handle'];
         let imageSource = tweet['user']['avatars']['small'];
         // ADD THE OTHER IMAGES AT FONTAWESOME - UPDATE APPEND TO ADD TO FOOTER
         // YOU MAY NEED TO ADD TWO ELEMENTS TO FOOTER TO DISPLAY TIME ON LEFT
@@ -38,7 +39,10 @@ $(document).ready(function () {
 
         let a = $('<article>').addClass("existing-tweet");
         let hdr = $('<header>');
+        let div = $('<div>');
+        div.attr('id', 'headerNames');
         let img = $('<img>');
+        let src = $('<src>');
         // let footer = $('<footer>');
         //build header
 
@@ -47,12 +51,17 @@ $(document).ready(function () {
         //$('.existing-tweet img').attr('src', imageSource);
         img.attr('src', imageSource);
         img.appendTo(hdr);
-        $('<h2>').text(hdrTxt).appendTo(hdr);
+        div.appendTo(hdr);
+        $('<h2>').text(hdrTxt).appendTo(div);
+        // <span> class="handle">user address</span>  adding May 16
+        $('<span>').addClass("handle").text(handle).appendTo(div);
+        //
         hdr.appendTo(a);
         $('<p>').text(content).appendTo(a);
         $('<footer>').text(daysAgo).appendTo(a);
 
-        //console.log(a);
+
+        console.log(a);
         return a;
     }
     function loadTweets() {
@@ -91,7 +100,7 @@ $(document).ready(function () {
             submitTrue = false;
             console.log(`length error`)
             $('#tweetErr').text(`Tweet exceeds ${maxLen} characters!`);
-            $('#tweetErr').removeClass('hide');            
+            $('#tweetErr').removeClass('hide');
         }
 
         // console.log(term);
@@ -107,7 +116,7 @@ $(document).ready(function () {
 
     });
 
-    $("#nav-bar [type=button]").click(function(){
+    $("#nav-bar [type=button]").click(function () {
         //alert("nav bar button click.");
         $(".new-tweet").slideDown().find("#txt1").focus();
     });
