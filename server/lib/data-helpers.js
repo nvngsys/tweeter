@@ -9,12 +9,15 @@ module.exports = function makeDataHelpers(db) {
   return {
 
     // Saves a tweet to `db`
+    
     saveTweet: function (newTweet, callback) {
       db.collection('tweets').insertOne( newTweet, function(err, tweets) {
+        //console.log("saveTweets-dhelper");
         if (err) {
-          console.log(err);
+          return callback(err);
         }
-         callback(tweets);
+        //console.log(`save tweet data helper`);
+         callback(null, tweets);
       });
       // simulateDelay(() => {
       //   db.tweets.push(newTweet);
@@ -25,6 +28,7 @@ module.exports = function makeDataHelpers(db) {
     // Get all tweets in `db`, sorted by newest first
     getTweets: function (callback) {
       db.collection("tweets").find().toArray((err, tweets) => {
+        //console.log("getTweets-dhelper");
         if (err) {
           return callback(err);
         }
