@@ -1,12 +1,3 @@
-/* -------------------------------
- * Develeper: Jack Brennan
- * Created: May 15, 2019
- * Purpose: 
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 
 $(document).ready(function () {
 
@@ -29,7 +20,7 @@ $(document).ready(function () {
         let daysAgo = moment(unixTime).fromNow();
 
         /** Build HTML for existing tweet dynamically */
-        let a = $('<article>').addClass("existing-tweet");
+        let article = $('<article>').addClass("existing-tweet");
         let hdr = $('<header>');
         let div = $('<div>');
         let footer = $('<footer>');
@@ -42,8 +33,8 @@ $(document).ready(function () {
         div.appendTo(hdr);
         $('<h2>').text(hdrTxt).appendTo(div);
         $('<span>').addClass("handle").text(handle).appendTo(div);
-        hdr.appendTo(a);
-        $('<p>').text(content).appendTo(a);
+        hdr.appendTo(article);
+        $('<p>').text(content).appendTo(article);
 
         //orig
         //$('<footer>').text(daysAgo).appendTo(a);
@@ -55,9 +46,9 @@ $(document).ready(function () {
         $('<i>').addClass("fas fa-heart").appendTo(divFoot);
         divFoot.appendTo(footer);
         
-        footer.appendTo(a);
+        footer.appendTo(article);
 
-        return a;
+        return article;
     }
     function loadTweets() {
         $.get("/tweets/", function (data) {
