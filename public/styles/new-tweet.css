@@ -24,6 +24,12 @@
     border-bottom: 2px solid black;
   }
 
+  input[type=submit] {
+  color: white;
+  border-radius: 10px;
+  background-color: #00a087;
+  }
+
   textarea[name=text]{
     min-height: 4em;
     min-width: 100%;

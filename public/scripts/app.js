@@ -5,7 +5,6 @@ $(document).ready(function () {
         let $tweet = {};
         tweets.forEach(item => {
             $tweet = createTweetElement(item);
-            //$('.tweet-container').append($tweet);
             $('.tweet-container').prepend($tweet);
         });
     }
@@ -36,8 +35,6 @@ $(document).ready(function () {
         hdr.appendTo(article);
         $('<p>').text(content).appendTo(article);
 
-        //orig
-        //$('<footer>').text(daysAgo).appendTo(a);
         $('<span>').addClass("handle").text(daysAgo).appendTo(footer);
         
         divFoot.attr('id', 'footerLikes');
