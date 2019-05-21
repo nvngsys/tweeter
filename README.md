@@ -1,6 +1,4 @@
 # Tweeter Project
-# GitHub # Project Name: nvngsys/tweeter
-
 
 ## Description
 Tweeter is a simple, single-page Twitter clone.
